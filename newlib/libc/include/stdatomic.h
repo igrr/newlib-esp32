@@ -43,7 +43,8 @@
 #include <stdint.h>
 #endif
 
-#if __has_extension(c_atomic) || __has_extension(cxx_atomic)
+#if (__has_extension(c_atomic) || __has_extension(cxx_atomic)) && \
+    defined(__clang__)
 #define	__CLANG_ATOMICS
 #elif __GNUC_PREREQ__(4, 7)
 #define	__GNUC_ATOMICS
