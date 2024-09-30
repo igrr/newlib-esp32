@@ -1,7 +1,9 @@
 #include "config.h"
 #include "warning.h"
 
-int	pthread_rwlock_timedrdlock (void *__rwlock,
+int
+__attribute__((weak))
+pthread_rwlock_timedrdlock (void *__rwlock,
 				    const void *__abstime) {
   return -1;
 }

@@ -2,7 +2,9 @@
 #include "warning.h"
 #include <pthread.h>
 
-int	pthread_key_create (pthread_key_t *__key,
+int
+__attribute__((weak))
+pthread_key_create (pthread_key_t *__key,
 			    void (*__destructor)(void *)) {
   return -1;
 }

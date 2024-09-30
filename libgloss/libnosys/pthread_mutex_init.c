@@ -2,7 +2,9 @@
 #include "warning.h"
 #include <pthread.h>
 
-int	pthread_mutex_init (pthread_mutex_t *__mutex,
+int
+__attribute__((weak))
+pthread_mutex_init (pthread_mutex_t *__mutex,
 			    const pthread_mutexattr_t *__attr) {
   return -1;
 }

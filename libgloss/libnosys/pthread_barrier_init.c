@@ -1,7 +1,9 @@
 #include "config.h"
 #include "warning.h"
 
-int	pthread_barrier_init (void *__barrier,
+int
+__attribute__((weak))
+pthread_barrier_init (void *__barrier,
 			      const void *__attr,
 			      unsigned __count) {
   return -1;

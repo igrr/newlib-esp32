@@ -2,7 +2,9 @@
 #include "warning.h"
 #include <pthread.h>
 
-void	pthread_yield (void) {
+void
+__attribute__((weak))
+pthread_yield (void) {
   return;
 }
 stub_warning(pthread_yield);

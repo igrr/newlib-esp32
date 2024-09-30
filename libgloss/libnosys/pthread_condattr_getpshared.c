@@ -2,7 +2,9 @@
 #include "warning.h"
 #include <pthread.h>
 
-int	pthread_condattr_getpshared (const pthread_condattr_t *__attr,
+int
+__attribute__((weak))
+pthread_condattr_getpshared (const pthread_condattr_t *__attr,
 				     int *__pshared) {
   return -1;
 }

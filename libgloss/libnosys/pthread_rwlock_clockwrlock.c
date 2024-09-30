@@ -2,7 +2,9 @@
 #include "warning.h"
 #include <sys/types.h>
 
-int pthread_rwlock_clockwrlock(void *__restrict _pthread, clockid_t,
+int
+__attribute__((weak))
+pthread_rwlock_clockwrlock(void *__restrict _pthread, clockid_t,
 				   const void *__restrict) {
   return -1;
 }
