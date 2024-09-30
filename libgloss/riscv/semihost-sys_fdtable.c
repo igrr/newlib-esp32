@@ -25,6 +25,7 @@ void __attribute__ ((constructor))
 init_semihosting ()
 {
   int handle;
+  struct fdentry *fd;
 
   for (int i=0; i<RISCV_MAX_OPEN_FILES; i++)
     fdtable[i].handle = -1;
@@ -32,17 +33,20 @@ init_semihosting ()
   /* Set up std streams.  */
   /* stdin.  */
   handle = _open (":tt", O_RDONLY);
-  fdtable[STDIN_FILENO].handle = handle;
+  fd =__get_fdentry (handle);
+  fdtable[STDIN_FILENO].handle = fd ? fd->handle : -1;
   fdtable[STDIN_FILENO].pos = 0;
 
   /* stdout.  */
   handle = _open (":tt", O_WRONLY|O_CREAT|O_TRUNC);
-  fdtable[STDOUT_FILENO].handle = handle;
+  fd =__get_fdentry (handle);
+  fdtable[STDOUT_FILENO].handle = fd ? fd->handle : -1;
   fdtable[STDOUT_FILENO].pos = 0;
 
   /* stderr.  */
   handle = _open (":tt", O_WRONLY|O_CREAT|O_APPEND);
-  fdtable[STDERR_FILENO].handle = handle;
+  fd =__get_fdentry (handle);
+  fdtable[STDERR_FILENO].handle = fd ? fd->handle : -1;
   fdtable[STDERR_FILENO].pos = 0;
 }
 
