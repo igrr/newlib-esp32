@@ -25,6 +25,7 @@ multilibtool_LIBRARIES += %D%/libgloss.a
 	%D%/sys_ftime.c \
 	%D%/sys_getcwd.c \
 	%D%/sys_getpid.c \
+	%D%/sys_getreent.c \
 	%D%/sys_gettimeofday.c \
 	%D%/sys_isatty.c \
 	%D%/sys_kill.c \
@@ -58,6 +59,7 @@ multilibtool_LIBRARIES += %D%/libsemihost.a
 	%D%/sys_fork.c \
 	%D%/sys_getcwd.c \
 	%D%/sys_getpid.c \
+	%D%/sys_getreent.c \
 	%D%/sys_kill.c \
 	%D%/sys_utime.c \
 	%D%/sys_wait.c \
@@ -77,10 +79,7 @@ multilibtool_LIBRARIES += %D%/libsemihost.a
 	%D%/semihost-sys_unlink.c \
 	%D%/semihost-sys_write.c
 
-multilibtool_LIBRARIES += %D%/libsys_qemu.a
-%C%_libsys_qemu_a_CPPFLAGS = -I$(srcdir)/%D%
-%C%_libsys_qemu_a_SOURCES = \
-	%D%/qemu-syscalls.c
-
 includemachinetooldir = $(tooldir)/include/machine
 includemachinetool_DATA = %D%/machine/syscall.h
+
+include %D%/esp/Makefile.inc
